@@ -24,7 +24,7 @@ void loop() {
 	}
 	// if the button is on play the morse code
 	if (button.isPressed()) {
-		// if morse message is ended, restart sending it after 3 seconds
+		// if morse message is ended, restart sending it after the interval
 		if (!morseSender.continueSending()) {
 			if (!waiting) {
 				timeElapsed = 0;
