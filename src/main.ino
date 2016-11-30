@@ -19,9 +19,7 @@ void setup() {
 
 void loop() {
 	// start sending morse code when the button goes on
-	if (button.uniquePress()) {
-		morseSender.startSending();
-	}
+	if (button.uniquePress()) morseSender.startSending();
 	// if the button is on play the morse code
 	if (button.isPressed()) {
 		// if morse message is ended, restart sending it after the interval
@@ -37,7 +35,5 @@ void loop() {
 		}
 	}
 	// else turn on the relay/light
-	else {
-		digitalWrite(RELAY, HIGH);
-	}
+	else digitalWrite(RELAY, HIGH);
 }
