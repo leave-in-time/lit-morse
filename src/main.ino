@@ -5,16 +5,16 @@
 #define RELAY A1
 #define BUTTON 8
 
-LEDMorseSender morseSender = LEDMorseSender(RELAY, 7.0);
+LEDMorseSender morseSender = LEDMorseSender(RELAY, 5.0);
 Button button = Button(BUTTON, INPUT_PULLUP);
 
 elapsedMillis timeElapsed;
-unsigned int interval = 1000;
+unsigned int interval = 2000;
 bool waiting = false;
 
 void setup() {
 	morseSender.setup();
-	morseSender.setMessage(String("sos"));
+	morseSender.setMessage(String("wd40"));
 }
 
 void loop() {
