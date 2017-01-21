@@ -5,11 +5,11 @@
 #define RELAY A1
 #define BUTTON 8
 
-LEDMorseSender morseSender = LEDMorseSender(RELAY, 5.0);
+LEDMorseSender morseSender = LEDMorseSender(RELAY, 2.0);
 Button button = Button(BUTTON, INPUT_PULLUP);
 
 elapsedMillis timeElapsed;
-unsigned int interval = 2000;
+unsigned int interval = 5000;
 bool waiting = false;
 
 void setup() {
@@ -19,8 +19,14 @@ void setup() {
 
 void loop() {
 	// start sending morse code when the button goes on
-	if (button.uniquePress()) morseSender.startSending();
-	// if the button is on play the morse code
+	if (button.uniquePress()) {
+		// first turn off the light to start a clean morse sequence
+		digitalWrite(RELAY, LOW);
+		// wait for 2 secs before starting morse
+		delay(2000);
+		morseSender.startSending();
+	}
+	// if the button is on, play the morse code
 	if (button.isPressed()) {
 		// if morse message is ended, restart sending it after the interval
 		if (!morseSender.continueSending()) {
