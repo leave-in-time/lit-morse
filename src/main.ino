@@ -42,4 +42,5 @@ void loop() {
 	}
 	// else turn on the relay/light
 	else digitalWrite(RELAY, HIGH);
+	delay(100);
 }
